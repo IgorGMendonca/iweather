@@ -2,12 +2,12 @@ name: CI/CD
 
 on:
   push:
-    tags:
-      - build-*
+    branches:
+      - main
 
 jobs:
-  ci:
-    name: Unit Tests
+  CI:
+    name: Continuous Integration
     runs-on: ubuntu-latest
 
     steps:
@@ -19,40 +19,18 @@ jobs:
       with:
         node-version: 18.x
 
-    - name: Cache node modules
-      uses: actions/cache@v2
-      with:
-        path: ~/.cache/yarn  # Cache para Yarn
-        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-yarn-
-
-    - name: Instalar dependências com Yarn
-      run: yarn install --frozen-lockfile
+    - name: Install dependencies
+      run: npm install
 
     - name: Run Tests
-      run: yarn test
+      run: npm test
 
-  cd:
-    name: Build React Native
+  CD:
+    name: Continuous Delivery
     runs-on: ubuntu-latest
 
-    needs: ci
+    needs: CI
 
     steps:
-    - name: Checkout código
-      uses: actions/checkout@v2
-
-    - name: Setup Node
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18.x
-
-    - name: Setup Expo and EAS
-      uses: expo/expo-github-action@v8
-      with:
-        eas-version: latest
-        token: ${{ secrets.EXPO_TOKEN }}
-
-    - name: Build on EAS
-      run: eas build --platform android --non-interactive --no-wait
+    - name: Checkout repository
+      uses: actions/checkout@v3

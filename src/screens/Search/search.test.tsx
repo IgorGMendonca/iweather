@@ -10,7 +10,10 @@ import { api } from '@services/api'
 
 describe('Screen: Search', () => {
   it('should be show city option', async () => {
-    jest.spyOn(api, 'get').mockResolvedValue({ data: mockCityAPIResponse })
+    jest.spyOn(api, 'get').mockResolvedValue({
+      data: mockCityAPIResponse,
+      config: { timeout: 5000 },
+    });
 
     render(<Search />)
 
