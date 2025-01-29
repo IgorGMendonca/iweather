@@ -10,13 +10,13 @@
 </p>
 
 <p align="center">
-    <img align="center" src="https://github.com/IgorGMendonca/IgniteQuiz/blob/master/assets/capa.png" alt="capa"/>
+    <img align="center" src="https://github.com/IgorGMendonca/iweather/blob/master/assets/Capa.png" alt="capa"/>
 </p>
 
 ## 💻 Testes
 
 <p align="center">
-    <img align="center" src="https://github.com/IgorGMendonca/IgniteQuiz/blob/master/assets/capa.png" alt="capa"/>
+    <img align="center" src="https://github.com/IgorGMendonca/iweather/blob/master/assets/teste%20coverage.png" alt="capa"/>
 </p>
 
 
